@@ -21,23 +21,23 @@ class _InputPageState extends State<InputPage> {
                 child: Row(
               children: <Widget>[
                 Expanded(
-                    child: BoxContainer()
+                    child: BoxContainer("male")
                 ),
                 Expanded(
-                    child: BoxContainer()
+                    child: BoxContainer("female")
                 )
               ],
             )),
             Expanded(
-                child: BoxContainer()
+                child: BoxContainer("progress")
             ),
             Expanded(
                 child: Row(
               children: <Widget>[
                 Expanded(
-                    child: BoxContainer()),
+                    child: BoxContainer("weight")),
                 Expanded(
-                    child: BoxContainer())
+                    child: BoxContainer("height"))
               ],
             )),
             Container(
