@@ -1,8 +1,14 @@
 import 'package:bmi_calculator_flutter/reusableUi/box_container.dart';
+import 'package:bmi_calculator_flutter/util/BmiEnum.dart';
 import 'package:flutter/material.dart';
 
 const activeColor = Color(0xFF1D111);
 const inactiveColor = Color(0xFF1D1E33);
+
+enum ButtonType{
+  male,
+  female
+}
 
 class InputPage extends StatefulWidget {
   @override
@@ -12,17 +18,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Color femaleColor = inactiveColor;
   Color maleColor = inactiveColor;
-
-  void updateColor(int tap){
-    if(tap == 1){
-      maleColor = activeColor;
-      femaleColor = inactiveColor;
-    }else{
-      maleColor = inactiveColor;
-      femaleColor = activeColor;
-    }
-  }
-
+  var gender;
+  BmiEnum bmiEnum = new BmiEnum();
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +36,14 @@ class _InputPageState extends State<InputPage> {
                     child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      updateColor(1);
+                      gender = ButtonType.male;
                     });
                   },
                   child: Container(
                       width: double.infinity,
                       margin: EdgeInsets.all(15.0),
                       decoration: BoxDecoration(
-                        color: maleColor,
+                        color:  gender == ButtonType.male ? maleColor = activeColor :maleColor = inactiveColor,
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: BoxContainer("male")),
@@ -55,14 +52,14 @@ class _InputPageState extends State<InputPage> {
                     child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      updateColor(2);
+                      gender = ButtonType.female;
                     });
                   },
                   child: Container(
                       width: double.infinity,
                       margin: EdgeInsets.all(15.0),
                       decoration: BoxDecoration(
-                        color: femaleColor,
+                        color:  gender == ButtonType.female ? femaleColor = activeColor : femaleColor = inactiveColor,
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: BoxContainer("female")),
