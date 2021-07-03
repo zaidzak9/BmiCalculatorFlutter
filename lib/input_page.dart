@@ -1,9 +1,7 @@
 import 'package:bmi_calculator_flutter/reusableUi/box_container.dart';
-import 'package:bmi_calculator_flutter/util/BmiEnum.dart';
+import 'package:bmi_calculator_flutter/reusableUi/box_container_2.dart';
 import 'package:flutter/material.dart';
-
-const activeColor = Color(0xFF1D111);
-const inactiveColor = Color(0xFF1D1E33);
+import 'reusableUi/util/constants.dart';
 
 enum ButtonType{
   male,
@@ -16,16 +14,15 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color femaleColor = inactiveColor;
-  Color maleColor = inactiveColor;
+  Color femaleColor = kInactiveColor;
+  Color maleColor = kInactiveColor;
   var gender;
-  BmiEnum bmiEnum = new BmiEnum();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('BMI CALCULATOR'),
+          title: Text(kToolbarName),
         ),
         body: Column(
           children: <Widget>[
@@ -43,11 +40,12 @@ class _InputPageState extends State<InputPage> {
                       width: double.infinity,
                       margin: EdgeInsets.all(15.0),
                       decoration: BoxDecoration(
-                        color:  gender == ButtonType.male ? maleColor = activeColor :maleColor = inactiveColor,
+                        color:  gender == ButtonType.male ? maleColor = kActiveColor :maleColor = kInactiveColor,
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: BoxContainer("male")),
-                )),
+                      child: BoxContainer2(kMale)),
+                )
+                ),
                 Expanded(
                     child: GestureDetector(
                   onTap: () {
@@ -59,10 +57,10 @@ class _InputPageState extends State<InputPage> {
                       width: double.infinity,
                       margin: EdgeInsets.all(15.0),
                       decoration: BoxDecoration(
-                        color:  gender == ButtonType.female ? femaleColor = activeColor : femaleColor = inactiveColor,
+                        color:  gender == ButtonType.female ? femaleColor = kActiveColor : femaleColor = kInactiveColor,
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: BoxContainer("female")),
+                      child: BoxContainer2(kFemale)),
                 ))
               ],
             )),
@@ -74,7 +72,7 @@ class _InputPageState extends State<InputPage> {
                     color: Color(0xFF1D1E33),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  child: BoxContainer("progress")),
+                  child: BoxContainer2(kHeight)),
             ),
             Expanded(
                 child: Row(
@@ -87,7 +85,7 @@ class _InputPageState extends State<InputPage> {
                         color: Color(0xFF1D1E33),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: BoxContainer("weight")),
+                      child: BoxContainer2(kWeight)),
                 ),
                 Expanded(
                   child: Container(
@@ -97,7 +95,7 @@ class _InputPageState extends State<InputPage> {
                         color: Color(0xFF1D1E33),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: BoxContainer("height")),
+                      child: BoxContainer2(kProgress)),
                 )
               ],
             )),

@@ -2,19 +2,23 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'util/constants.dart';
 
-//DEPRECATED
-class BoxContainer extends StatelessWidget {
+class BoxContainer2 extends StatefulWidget {
   final String whichBox;
+  const BoxContainer2(this.whichBox);
 
   @override
+  _BoxContainer2State createState() => _BoxContainer2State();
+}
+
+class _BoxContainer2State extends State<BoxContainer2> {
+  int height = 180;
+  @override
   Widget build(BuildContext context) {
-    return widgetToDisplay();
+    return containerToDisplay();
   }
 
-  BoxContainer(this.whichBox);
-
-  Widget widgetToDisplay() {
-    if (whichBox == "male") {
+  Widget containerToDisplay() {
+    if (widget.whichBox == kMale) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -28,7 +32,7 @@ class BoxContainer extends StatelessWidget {
           Text("MALE", style: kLabelTextStyle)
         ],
       );
-    } else if (whichBox == "female") {
+    } else if (widget.whichBox == kFemale) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -46,7 +50,7 @@ class BoxContainer extends StatelessWidget {
         ],
         //
       );
-    } else if (whichBox == "progress") {
+    } else if (widget.whichBox == kHeight) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -59,11 +63,11 @@ class BoxContainer extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-           //crossAxisAlignment: CrossAxisAlignment.baseline,
+            //crossAxisAlignment: CrossAxisAlignment.baseline,
             //textBaseline: TextBaseline.alphabetic,
             children: <Widget>[
               Text(
-                "180",
+                height.toString(),
                 style: kHeavyTextStyle,
               ),
               Text(
@@ -72,11 +76,22 @@ class BoxContainer extends StatelessWidget {
               )
             ],
           ),
-
+          Slider(
+            value: height.toDouble(),
+            min: 120.0,
+            max: 220.0,
+            activeColor: kActiveColorBar,
+            inactiveColor:kInactiveColorBar,
+            onChanged: (double onChange){
+              setState(() {
+                height = onChange.round();
+              });
+            },
+          )
         ],
         //
       );
-    } else if (whichBox == "weight") {
+    } else if (widget.whichBox == kWeight) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -84,10 +99,12 @@ class BoxContainer extends StatelessWidget {
         ],
         //
       );
-    } else if (whichBox == "height") {
+    } else if (widget.whichBox == kProgress) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[Icon(FontAwesomeIcons.textHeight)],
+        children: <Widget>[
+          
+        ],
         //
       );
     } else {
@@ -99,3 +116,4 @@ class BoxContainer extends StatelessWidget {
     }
   }
 }
+
