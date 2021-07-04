@@ -1,3 +1,4 @@
+import 'package:bmi_calculator_flutter/result_page.dart';
 import 'package:bmi_calculator_flutter/reusableUi/box_container.dart';
 import 'package:flutter/material.dart';
 import 'reusableUi/util/constants.dart';
@@ -97,16 +98,21 @@ class _InputPageState extends State<InputPage> {
                       child: BoxContainer(kAge)),
                 )
               ],
-            )),Container(
-                alignment: Alignment.center,
-                color: Colors.pink,
-                margin: EdgeInsets.only(top: 15.0),
-                width: double.infinity,
-                height: 100.0,
-                child: Text("Calculate BMI",style: TextStyle(fontSize: 40.0,
-                    fontWeight: FontWeight.w700,
-                    color:Colors.white),),
-              ),
+            )),GestureDetector(
+              onTap: (){
+                Navigator.push(context,MaterialPageRoute(builder: (context) =>ResultPage()));
+              },
+              child: Container(
+                  alignment: Alignment.center,
+                  color: Colors.pink,
+                  margin: EdgeInsets.only(top: 15.0),
+                  width: double.infinity,
+                  height: 100.0,
+                  child: Text("Calculate BMI",style: TextStyle(fontSize: 40.0,
+                      fontWeight: FontWeight.w700,
+                      color:Colors.white),),
+                ),
+            ),
           ],
         ));
   }
