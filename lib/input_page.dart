@@ -1,5 +1,4 @@
 import 'package:bmi_calculator_flutter/reusableUi/box_container.dart';
-import 'package:bmi_calculator_flutter/reusableUi/box_container_2.dart';
 import 'package:flutter/material.dart';
 import 'reusableUi/util/constants.dart';
 
@@ -43,7 +42,7 @@ class _InputPageState extends State<InputPage> {
                         color:  gender == ButtonType.male ? maleColor = kActiveColor :maleColor = kInactiveColor,
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: BoxContainer2(kMale)),
+                      child: BoxContainer(kMale)),
                 )
                 ),
                 Expanded(
@@ -60,7 +59,7 @@ class _InputPageState extends State<InputPage> {
                         color:  gender == ButtonType.female ? femaleColor = kActiveColor : femaleColor = kInactiveColor,
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: BoxContainer2(kFemale)),
+                      child: BoxContainer(kFemale)),
                 ))
               ],
             )),
@@ -72,7 +71,7 @@ class _InputPageState extends State<InputPage> {
                     color: Color(0xFF1D1E33),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  child: BoxContainer2(kHeight)),
+                  child: BoxContainer(kHeight)),
             ),
             Expanded(
                 child: Row(
@@ -85,7 +84,7 @@ class _InputPageState extends State<InputPage> {
                         color: Color(0xFF1D1E33),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: BoxContainer2(kWeight)),
+                      child: BoxContainer(kWeight)),
                 ),
                 Expanded(
                   child: Container(
@@ -95,16 +94,19 @@ class _InputPageState extends State<InputPage> {
                         color: Color(0xFF1D1E33),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: BoxContainer2(kProgress)),
+                      child: BoxContainer(kAge)),
                 )
               ],
-            )),
-            Container(
-              color: Colors.pink,
-              margin: EdgeInsets.only(top: 15.0),
-              width: double.infinity,
-              height: 100.0,
-            )
+            )),Container(
+                alignment: Alignment.center,
+                color: Colors.pink,
+                margin: EdgeInsets.only(top: 15.0),
+                width: double.infinity,
+                height: 100.0,
+                child: Text("Calculate BMI",style: TextStyle(fontSize: 40.0,
+                    fontWeight: FontWeight.w700,
+                    color:Colors.white),),
+              ),
           ],
         ));
   }

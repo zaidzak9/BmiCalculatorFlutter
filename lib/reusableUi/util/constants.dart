@@ -8,14 +8,14 @@ const kMale = "Male";
 const kFemale = "Female";
 const kHeight = "Height";
 const kWeight = "Weight";
-const kProgress = "Progress";
+const kAge = "Age";
 const kToolbarName = "BMI CALCULATOR";
 
 const kLabelTextStyle = TextStyle(
-    fontSize: 18.0,
+    fontSize: 22.0,
     color:Color(0xFF8D8E98)
 );
-const kHeavyTextStyle = TextStyle(
+const kLabelHeavyTextStyle = TextStyle(
     fontSize: 50.0,
     fontWeight: FontWeight.w900,
     color:Color(0xFF8D8E98)
