@@ -1,7 +1,9 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'util/constants.dart';
-
+int height = 180;
+int weight = 75;
+int age = 25;
 class BoxContainer extends StatefulWidget {
   final String whichBox;
   const BoxContainer(this.whichBox);
@@ -11,9 +13,6 @@ class BoxContainer extends StatefulWidget {
 }
 
 class _BoxContainerState extends State<BoxContainer> {
-  int height = 180;
-  int weight = 75;
-  int age = 25;
 
   @override
   Widget build(BuildContext context) {

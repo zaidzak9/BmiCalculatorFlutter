@@ -1,3 +1,4 @@
+import 'package:bmi_calculator_flutter/calculator_logic.dart';
 import 'package:bmi_calculator_flutter/result_page.dart';
 import 'package:bmi_calculator_flutter/reusableUi/box_container.dart';
 import 'package:flutter/material.dart';
@@ -100,7 +101,12 @@ class _InputPageState extends State<InputPage> {
               ],
             )),GestureDetector(
               onTap: (){
-                Navigator.push(context,MaterialPageRoute(builder: (context) =>ResultPage()));
+                CalculatorLogic logic = CalculatorLogic(height,weight);
+                Navigator.push(context,MaterialPageRoute(builder: (context) =>ResultPage(
+                  bmi: logic.calculateBmi(),
+                  description:logic.getDescription() ,
+                  result: logic.getResult(),
+                )));
               },
               child: Container(
                   alignment: Alignment.center,

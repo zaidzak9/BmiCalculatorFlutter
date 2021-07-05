@@ -1,9 +1,14 @@
 import 'package:bmi_calculator_flutter/reusableUi/util/constants.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class ResultPage extends StatefulWidget {
+  final String bmi;
+  final String description;
+  final String result;
+
+  ResultPage({@required this.bmi,@required  this.description,@required this.result});
+
   @override
   _ResultPageState createState() => _ResultPageState();
 }
@@ -31,21 +36,26 @@ class _ResultPageState extends State<ResultPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Text("BMI", style: kLabelHeavyTextStyle),
-                    Text("Description", style: kLabelTextStyle),
-                    Text("Remedy Description", style: kLabelTextStyle)
+                    Text(widget.bmi, style: kLabelHeavyTextStyle),
+                    Text(widget.result, style: kLabelTextStyle),
+                    Text(widget.description, style: kLabelTextStyle)
                   ],
                 ),
               )),
           Expanded(
-              child: Container(
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  color: Colors.pink,
-                  child: Text(
-                    "Go Back to Home",
-                    style: TextStyle(fontSize: 22.0, color: Colors.white),
-                  )))
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.pop(context);
+                },
+                child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    color: Colors.pink,
+                    child: Text(
+                      "Go Back to Home",
+                      style: TextStyle(fontSize: 22.0, color: Colors.white),
+                    )),
+              ))
         ],
       ),
     );
